@@ -259,6 +259,7 @@ export default function Home() {
   const name1Ref = useRef<HTMLSpanElement>(null);
   const name2Ref = useRef<HTMLSpanElement>(null);
   const line3Ref = useRef<HTMLParagraphElement>(null);
+  const btnRef = useRef<HTMLAnchorElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const glowLineRef = useRef<HTMLDivElement>(null);
 
@@ -322,6 +323,13 @@ export default function Home() {
         { x: 0, opacity: 1, filter: "blur(0px)", duration: 0.7 },
         "-=0.5"
       )
+      // Portfolio button fades in
+      .fromTo(
+        btnRef.current,
+        { y: 15, opacity: 0, filter: "blur(6px)" },
+        { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.6 },
+        "-=0.3"
+      )
       // Subtle pulse on the whole content block
       .fromTo(
         contentRef.current,
@@ -379,6 +387,19 @@ export default function Home() {
         >
           Since 1996
         </p>
+
+        <a
+          ref={btnRef}
+          href="https://portfolio.nawawit.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-6 py-2.5 font-mono text-xs tracking-widest uppercase text-blue-400 opacity-0 backdrop-blur-sm transition-all hover:border-blue-400/60 hover:bg-blue-500/20 hover:text-blue-300 hover:shadow-[0_0_20px_rgba(96,165,250,0.25)] sm:text-sm"
+        >
+          My Portfolio
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+        </a>
       </div>
     </div>
   );
